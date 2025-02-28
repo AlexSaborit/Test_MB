@@ -10,6 +10,7 @@ import java.io.IOException
 import java.time.LocalDateTime
 
 object JsonIO {
+    /*
     fun llegirLlistat(context: Context, reserves: Boolean){
         val jsonFilePath = context.filesDir.toString() + "/json/esdeveniments.json"
         var esdeveniments: MutableList<Esdeveniment> = mutableListOf()
@@ -198,4 +199,6 @@ object JsonIO {
 
         return llistaOrdenada
     }
+
+     */
 }

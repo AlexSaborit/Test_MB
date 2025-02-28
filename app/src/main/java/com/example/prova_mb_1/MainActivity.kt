@@ -45,5 +45,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        if (Debug.debug) {
+            Debug.showMessage(this,"Debug mode enabled")
+        }
     }
 }
