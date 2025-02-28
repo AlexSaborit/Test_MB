@@ -29,6 +29,7 @@ Entrega:
 	• Incluir un archivo README.md explicando la arquitectura utilizada y cómo ejecutar las pruebas.
 	• Compartir el enlace del repositorio para su evaluación.  */
 
+/*//original
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -49,4 +50,65 @@ class MainActivity : AppCompatActivity() {
             Debug.showMessage(this,"Debug mode enabled")
         }
     }
+}
+ */
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsControllerCompat
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            UserAppWithInsets()
+        }
+    }
+}
+
+@Composable
+fun UserAppWithInsets() {
+    val context = LocalContext.current
+    val insets = remember { mutableStateOf(WindowInsetsCompat.CONSUMED) }
+
+    DisposableEffect(Unit) {
+        val window = (context as? ComponentActivity)?.window
+        window?.let {
+            ViewCompat.setOnApplyWindowInsetsListener(it.decorView) { _, newInsets ->
+                insets.value = newInsets
+                newInsets
+            }
+        }
+        onDispose {}
+    }
+
+    @OptIn(ExperimentalMaterial3Api::class) //accept use of experimental API for TopAppBar
+
+    Scaffold(topBar = {
+        TopAppBar(title = { Text("Llista d'Usuaris") })
+    }) { paddingValues ->
+        Column(modifier = Modifier.padding(paddingValues).padding(16.dp)) {
+            Text("Aplicació amb Jetpack Compose")
+            Spacer(modifier = Modifier.height(16.dp))
+            if (Debug.debug) {
+                Debug.showMessage(context, "Debug mode enabled")
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewUserAppWithInsets() {
+    UserAppWithInsets()
 }
