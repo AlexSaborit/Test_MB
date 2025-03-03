@@ -42,7 +42,7 @@ fun UserDetailScreen(user: User?, onBack: () -> Unit) {
                         //do not show the field info if phone and website are null or empty
                         info = ""
                     } else {
-                        info = "Website: " + getUserField(it, 3) //only show website in field info
+                        info = "Description: Website is " + getUserField(it, 3) //only show website in field info
                     }
                 } else {
                     if (it.website.isNullOrEmpty()){
