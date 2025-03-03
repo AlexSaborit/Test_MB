@@ -1,5 +1,6 @@
 package com.example.prova_mb_1.ui
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -8,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.prova_mb_1.Debug
 import com.example.prova_mb_1.User
 import com.example.prova_mb_1.api.UserService
 import com.example.prova_mb_1.api.RetrofitClient
@@ -30,8 +32,10 @@ fun UserListScreen(onUserClick: (User) -> Unit) {
         }
     }
 
-    Scaffold(topBar = { TopAppBar(title = { Text("Llista d'Usuaris") }) }) { paddingValues ->
-        LazyColumn(modifier = Modifier.padding(paddingValues).padding(16.dp)) {
+    Scaffold(topBar = { TopAppBar(title = { Text("User List") }) }) { paddingValues ->
+        LazyColumn(modifier = Modifier
+            .padding(paddingValues)
+            .padding(16.dp)) {
             items(users) { user ->
                 UserCard(user = user, onUserClick = onUserClick)
             }
@@ -43,12 +47,15 @@ fun UserListScreen(onUserClick: (User) -> Unit) {
 @Composable
 fun UserCard(user: User, onUserClick: (User) -> Unit) {
     Card(
-        modifier = Modifier.fillMaxWidth().padding(8.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
         onClick = { onUserClick(user) }
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = user.name, style = MaterialTheme.typography.titleMedium)
             Text(text = user.email, style = MaterialTheme.typography.bodyMedium)
+
         }
     }
 }

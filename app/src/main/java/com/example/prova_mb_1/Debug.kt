@@ -15,4 +15,12 @@ object Debug {
             Log.e(context.toString(), mensaje)
         } ?: Log.e("showMessage", "The Toast can not be shown: context is not an instance of Activity")
     }
+    fun enabled(context: Context) {
+        (context as? Activity)?.runOnUiThread {
+            if (debug) {
+                Toast.makeText(context, "Debug mode ENABLED", Toast.LENGTH_SHORT).show()
+            }
+            Log.e(context.toString(), "Debug mode ENABLED")
+        } ?: Log.e("showMessage", "The Toast can not be shown: context is not an instance of Activity")
+    }
 }
