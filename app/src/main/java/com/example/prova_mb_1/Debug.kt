@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.Toast
 
 object Debug {
-    val debug = true
+    val debug = false
     fun showMessage(context: Context, mensaje: String) {
         (context as? Activity)?.runOnUiThread {
             if (debug) {
