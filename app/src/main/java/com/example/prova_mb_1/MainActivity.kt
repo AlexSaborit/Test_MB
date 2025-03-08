@@ -96,10 +96,7 @@ fun UserAppWithInsets(userViewModel: UserViewModel) {
             } else {
                 UserDetailScreen(user = selectedUser, onBack = { selectedUser = null })
             }
-
             Spacer(modifier = Modifier.height(16.dp))
-
-
         }
     }
 }
