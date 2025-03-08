@@ -3,10 +3,10 @@ package com.example.prova_mb_1
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -14,8 +14,10 @@ import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.ViewCompat
 import com.example.prova_mb_1.model.User
+import com.example.prova_mb_1.repository.mock.MockUserRepository
 import com.example.prova_mb_1.ui.UserDetailScreen
 import com.example.prova_mb_1.ui.UserListScreen
+import com.example.prova_mb_1.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 /* Prova tècnica d'Android
@@ -51,17 +53,20 @@ Entrega:
 
 @AndroidEntryPoint //Entry point for Hilt
 class MainActivity : ComponentActivity() {
+
+    private val userViewModel: UserViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            UserAppWithInsets()
+            UserAppWithInsets(userViewModel)
             Debug.enabled(this)
         }
     }
 }
 
 @Composable
-fun UserAppWithInsets() {
+fun UserAppWithInsets(userViewModel: UserViewModel) {
     val context = LocalContext.current
     val insets = remember { mutableStateOf(WindowInsetsCompat.CONSUMED) }
     var selectedUser by remember { mutableStateOf<User?>(null) }
@@ -102,5 +107,6 @@ fun UserAppWithInsets() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewUserAppWithInsets() {
-    UserAppWithInsets()
+    val mockUserViewModel = UserViewModel(MockUserRepository()) // Using a mock repository (dummy data)
+    UserAppWithInsets(mockUserViewModel)
 }

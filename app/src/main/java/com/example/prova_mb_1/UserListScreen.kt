@@ -6,30 +6,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.prova_mb_1.model.User
-import com.example.prova_mb_1.api.UserService
-import com.example.prova_mb_1.api.RetrofitClient
-import kotlinx.coroutines.launch
+import com.example.prova_mb_1.viewmodel.UserViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UserListScreen(onUserClick: (User) -> Unit) {
-    val userService: UserService = RetrofitClient.userService
-    var users by remember { mutableStateOf<List<User>>(emptyList()) }
-    val coroutineScope = rememberCoroutineScope()
-
-    LaunchedEffect(Unit) {
-        coroutineScope.launch {
-            try {
-                users = userService.getUsers()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
+fun UserListScreen(users: List<User>, onUserClick: (User) -> Unit) {
     Scaffold(topBar = { TopAppBar(title = { Text("User List") }) }) { paddingValues ->
         LazyColumn(modifier = Modifier
             .padding(paddingValues)
@@ -56,10 +39,4 @@ fun UserCard(user: User, onUserClick: (User) -> Unit) {
 
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewUserListScreen() {
-    UserListScreen(onUserClick = {})
 }
