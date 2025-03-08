@@ -26,16 +26,16 @@ Desarrollador de Android
 Requisitos:
 
 1. Interfaz de Usuario (UI)
-	a. Implementar una pantalla principal que muestre una lista de usuarios con su nombre y correo electrónico.
-	b. Al seleccionar un usuario, se debe mostrar una pantalla de detalles con información adicional: una descripción o frase (ocurrente o graciosa)
-	c. Utilizar Jetpack Compose para la construcción de la UI.
+✅	a. Implementar una pantalla principal que muestre una lista de usuarios con su nombre y correo electrónico.
+✅	b. Al seleccionar un usuario, se debe mostrar una pantalla de detalles con información adicional: una descripción o frase (ocurrente o graciosa)
+✅	c. Utilizar Jetpack Compose para la construcción de la UI.
 
 2. Datos
-    a. Obtener los datos desde una API simulada. Puedes utilizar https://jsonplaceholder.typicode.com/users como fuente de datos.
-    b. Implementar un repositorio que maneje la obtención de datos y use un patrón de arquitectura (MWM recomendado).
+✅  a. Obtener los datos desde una API simulada. Puedes utilizar https://jsonplaceholder.typicode.com/users como fuente de datos.
+✅  b. Implementar un repositorio que maneje la obtención de datos y use un patrón de arquitectura (MWM recomendado).
 
 3. Inyección de Dependencias
-	a. Usar Hilt o Dagger para la inyección de dependencias en ViewModels y Repositorios.
+✅  a. Usar Hilt o Dagger para la inyección de dependencias en ViewModels y Repositorios.
 
 4. Data Binding
 	a. Usar Data Binding en la UI para enlazar datos a los elementos de la vista.
