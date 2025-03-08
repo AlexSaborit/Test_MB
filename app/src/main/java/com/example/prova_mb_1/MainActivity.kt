@@ -6,14 +6,17 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.ViewCompat
+import com.example.prova_mb_1.model.User
 import com.example.prova_mb_1.ui.UserDetailScreen
 import com.example.prova_mb_1.ui.UserListScreen
+import dagger.hilt.android.AndroidEntryPoint
 
 /* Prova tècnica d'Android
 
@@ -46,6 +49,7 @@ Entrega:
 	• Incluir un archivo README.md explicando la arquitectura utilizada y cómo ejecutar las pruebas.
 	• Compartir el enlace del repositorio para su evaluación.  */
 
+@AndroidEntryPoint //Entry point for Hilt
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +65,8 @@ fun UserAppWithInsets() {
     val context = LocalContext.current
     val insets = remember { mutableStateOf(WindowInsetsCompat.CONSUMED) }
     var selectedUser by remember { mutableStateOf<User?>(null) }
+
+    val users by userViewModel.users.collectAsState() //obtain userlist from viewmodel
 
     DisposableEffect(Unit) {
         val window = (context as? ComponentActivity)?.window
@@ -79,7 +85,9 @@ fun UserAppWithInsets() {
     }) { paddingValues ->
         Column(modifier = Modifier.padding(paddingValues).padding(16.dp)) {
             if (selectedUser == null) {
-                UserListScreen(onUserClick = { selectedUser = it })
+                UserListScreen(
+                    users = users,
+                    onUserClick = { selectedUser = it })
             } else {
                 UserDetailScreen(user = selectedUser, onBack = { selectedUser = null })
             }
