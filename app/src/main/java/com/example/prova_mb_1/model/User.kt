@@ -1,4 +1,4 @@
-package com.example.prova_mb_1
+package com.example.prova_mb_1.model
 
 class User(
     val id: Int,

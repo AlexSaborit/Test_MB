@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.prova_mb_1.User
+import com.example.prova_mb_1.model.User
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -16,10 +16,10 @@ fun UserDetailScreen(user: User?, onBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Detalls de l'Usuari") },
+                title = { Text("User details") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Torna enrere")
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Go back")
                     }
                 }
             )
