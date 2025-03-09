@@ -38,7 +38,7 @@ Requisitos:
 ✅  a. Usar Hilt o Dagger para la inyección de dependencias en ViewModels y Repositorios.
 
 4. Data Binding
-	a. Usar Data Binding en la UI para enlazar datos a los elementos de la vista.
+✅	a. Usar Data Binding en la UI para enlazar datos a los elementos de la vista.
 
 5. Testing
 	a. Implementar pruebas unitarias con JUnit y Mockk para validar la lógica de negocio.
@@ -46,10 +46,10 @@ Requisitos:
 	c. Implementar una prueba E2E con Espresso que valide la navegación entre la lista y los detalles.
 
 
-Entrega:
-	• Subir el código a un repositorio público de GitHub.
-	• Incluir un archivo README.md explicando la arquitectura utilizada y cómo ejecutar las pruebas.
-	• Compartir el enlace del repositorio para su evaluación.  */
+6. Entrega:
+✅	a. Subir el código a un repositorio público de GitHub.
+	b. Incluir un archivo README.md explicando la arquitectura utilizada y cómo ejecutar las pruebas.
+	c. Compartir el enlace del repositorio para su evaluación.  */
 
 @AndroidEntryPoint //Entry point for Hilt
 class MainActivity : ComponentActivity() {

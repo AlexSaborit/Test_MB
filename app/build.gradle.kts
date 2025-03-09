@@ -63,6 +63,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation("io.mockk:mockk:1.13.8") //TODO("CHANGE TO CATALOG TO FETCH VERSIONS -IF APP BUILDS CORRECTLY")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3") //TODO("CHANGE TO CATALOG TO FETCH VERSIONS -IF APP BUILDS CORRECTLY")
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.ui)
