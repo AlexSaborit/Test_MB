@@ -42,7 +42,7 @@ Requisitos:
 
 5. Testing
 ✅	a. Implementar pruebas unitarias con JUnit y Mockk para validar la lógica de negocio.
-	b. Implementar pruebas de integración para verificar la comunicación entre capas.
+✅	b. Implementar pruebas de integración para verificar la comunicación entre capas.
 	c. Implementar una prueba E2E con Espresso que valide la navegación entre la lista y los detalles.
 
 
