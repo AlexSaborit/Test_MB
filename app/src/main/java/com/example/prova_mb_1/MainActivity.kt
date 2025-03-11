@@ -41,7 +41,7 @@ Requisitos:
 ✅	a. Usar Data Binding en la UI para enlazar datos a los elementos de la vista.
 
 5. Testing
-	a. Implementar pruebas unitarias con JUnit y Mockk para validar la lógica de negocio.
+✅	a. Implementar pruebas unitarias con JUnit y Mockk para validar la lógica de negocio.
 	b. Implementar pruebas de integración para verificar la comunicación entre capas.
 	c. Implementar una prueba E2E con Espresso que valide la navegación entre la lista y los detalles.
 
@@ -71,7 +71,7 @@ fun UserAppWithInsets(userViewModel: UserViewModel) {
     val insets = remember { mutableStateOf(WindowInsetsCompat.CONSUMED) }
     var selectedUser by remember { mutableStateOf<User?>(null) }
 
-    val users by userViewModel.users.collectAsState() //obtain userlist from viewmodel
+    val userListState by userViewModel.userListState.collectAsState() //obtain userlist from viewmodel
 
     DisposableEffect(Unit) {
         val window = (context as? ComponentActivity)?.window
@@ -91,7 +91,7 @@ fun UserAppWithInsets(userViewModel: UserViewModel) {
         Column(modifier = Modifier.padding(paddingValues).padding(16.dp)) {
             if (selectedUser == null) {
                 UserListScreen(
-                    users = users,
+                    users = userListState.users,
                     onUserClick = { selectedUser = it })
             } else {
                 UserDetailScreen(user = selectedUser, onBack = { selectedUser = null })
@@ -108,6 +108,7 @@ fun PreviewUserAppWithInsets() {
     UserAppWithInsets(mockUserViewModel)
 }
 
+//TODO("DELETE THIS COMMENT WHEN DONE")
 /* //passos conversió punt 5. Testing
 	a. Implementar pruebas unitarias con JUnit y Mockk para validar la lógica de negocio.
 	b. Implementar pruebas de integración para verificar la comunicación entre capas.

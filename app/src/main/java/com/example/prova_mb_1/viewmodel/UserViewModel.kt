@@ -7,24 +7,44 @@ import com.example.prova_mb_1.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
+data class UserListState(
+    val isLoading: Boolean = false,
+    val users: List<User> = emptyList(),
+    val error: String? = null
+)
 
 @HiltViewModel
 class UserViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : ViewModel() {
 
-    private val _users = MutableStateFlow<List<User>>(emptyList())
-    val users: StateFlow<List<User>> = _users
+    private val _userListState = MutableStateFlow(UserListState())
+    val userListState: StateFlow<UserListState> = _userListState.asStateFlow()
 
     init {
         loadUsers()
     }
 
-    private fun loadUsers() {
+    fun loadUsers() {
+        _userListState.value = _userListState.value.copy(isLoading = true)
         viewModelScope.launch {
-            _users.value = userRepository.getUsers()
+            try {
+                val users = userRepository.getUsers()
+                _userListState.value = _userListState.value.copy(
+                    isLoading = false,
+                    users = users,
+                    error = null
+                )
+            } catch (e: Exception) {
+                _userListState.value = _userListState.value.copy(
+                    isLoading = false,
+                    error = "Error loading users: ${e.message}"
+                )
+            }
         }
     }
 }

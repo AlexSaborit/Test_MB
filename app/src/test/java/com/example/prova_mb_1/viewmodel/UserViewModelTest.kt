@@ -7,7 +7,7 @@ import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
@@ -53,9 +53,13 @@ class UserViewModelTest {
 
         // Act
         userViewModel = UserViewModel(userRepository)
+        userViewModel.loadUsers()
+        val actualStateList = userViewModel.userListState.toList()
 
         // Assert
-        assertEquals(users, userViewModel.users.first())
+        assertEquals(true, actualStateList[0].isLoading)
+        assertEquals(false, actualStateList[1].isLoading)
+        assertEquals(users, actualStateList[1].users)
     }
 
     @Test
@@ -65,8 +69,13 @@ class UserViewModelTest {
 
         // Act
         userViewModel = UserViewModel(userRepository)
+        userViewModel.loadUsers()
+        val actualStateList = userViewModel.userListState.toList()
 
         // Assert
-        assertEquals(emptyList<User>(), userViewModel.users.first())
+        assertEquals(true, actualStateList[0].isLoading)
+        assertEquals(false, actualStateList[1].isLoading)
+        assertEquals(emptyList<User>(), actualStateList[1].users)
+        assertEquals(null, actualStateList[1].error)
     }
 }
