@@ -38,7 +38,7 @@ Requisitos:
 ✅  a. Usar Hilt o Dagger para la inyección de dependencias en ViewModels y Repositorios.
 
 4. Data Binding
-	a. Usar Data Binding en la UI para enlazar datos a los elementos de la vista.
+✅	a. Usar Data Binding en la UI para enlazar datos a los elementos de la vista.
 
 5. Testing
 	a. Implementar pruebas unitarias con JUnit y Mockk para validar la lógica de negocio.
@@ -107,3 +107,69 @@ fun PreviewUserAppWithInsets() {
     val mockUserViewModel = UserViewModel(MockUserRepository()) // Using a mock repository (dummy data)
     UserAppWithInsets(mockUserViewModel)
 }
+
+/* //passos conversió punt 5. Testing
+	a. Implementar pruebas unitarias con JUnit y Mockk para validar la lógica de negocio.
+	b. Implementar pruebas de integración para verificar la comunicación entre capas.
+	c. Implementar una prueba E2E con Espresso que valide la navegación entre la lista y los detalles.
+
+Pas 1: Proves unitàries
+    Com que ja hem analitzat totes les classes, sabem en quines classes hem de fer proves unitàries
+    i quins casos hem de provar. Anem a fer una llista de les classes amb les proves que farem,
+     i així podrem anar marcant com a fetes les que ja tinguem:
+    Classes amb proves unitàries:
+✅  1. ApiService:
+        Provar que getUsers() fa la crida a l'endpoint correcte (/users) i amb el mètode HTTP correcte (GET).
+        Provar que si el servidor retorna una resposta amb èxit (codi 200), Retrofit transforma correctament
+        les dades JSON rebudes a una llista d'objectes User.
+        Provar que si el servidor retorna un error (codis 400, 500, etc.), Retrofit tracta l'error correctament.
+        Provar que si la crida falla per algun altre motiu (problema de xarxa, etc.), Retrofit tracta l'error correctament.
+✅  2. RetrofitModule:
+        Provar que provideRetrofit() retorna un objecte Retrofit amb la URL base correcte i amb el GsonConverterFactory.
+        Provar que provideApiService() retorna un objecte ApiService correctament configurat.
+✅  3. UserDetailScreen (funció getUserField):
+        Si user és null, ha de retornar "".
+        Si menuItem és 1, ha de retornar user.username o "".
+        Si menuItem és 2, ha de retornar user.phone o "".
+        Si menuItem és 3, ha de retornar user.website o "".
+        Si menuItem no és cap dels anteriors, ha de retornar "".
+✅  4. MockUserRepository:
+        Provar que, quan es crida a getUsers(), retorna una llista que:
+        No és null.
+        Conté 2 elements.
+        El primer element té id = 1, name = "Mock User 1" i email = "mock1@example.com".
+        El segon element té id = 2, name = "Mock User 2" i email = "mock2@example.com".
+✅  5. UserRepositoryImpl:
+        Provar que, quan es crida a getUsers(), es crida a apiService.getUsers().
+        Provar que, si apiService.getUsers() retorna una resposta amb èxit (codi 200) i amb cos
+        (una llista d'usuaris), getUsers() retorna aquesta llista d'usuaris.
+        Provar que, si apiService.getUsers() retorna una resposta amb èxit (codi 200) però amb cos null,
+        getUsers() retorna una llista buida.
+        Provar que, si apiService.getUsers() retorna una resposta amb error (codi 400 o 500), getUsers() retorna una llista buida.
+✅  6. UserViewModel:
+        Provar que, quan es crea UserViewModel, es crida a loadUsers().
+        Provar que loadUsers() crida a userRepository.getUsers().
+        Provar que, si userRepository.getUsers() retorna una llista d'usuaris, users emet aquesta llista.
+        Provar que, si userRepository.getUsers() retorna una llista buida, users emet una llista buida.
+    7. Debug:
+        Provar que, quan es crida a showMessage() amb debug = true i el context és una Activity, es mostra un Toast amb el missatge correcte.
+        Provar que, quan es crida a showMessage() amb debug = false i el context és una Activity, no es mostra cap Toast.
+        Provar que, quan es crida a showMessage(), es mostra el missatge correcte al logcat.
+        Provar que, quan es crida a showMessage() amb un context que no és una Activity, no es mostra cap Toast.
+        Provar que, quan es crida a showMessage() amb un context que no és una Activity, es mostra l'error al logcat.
+        Provar que, quan es crida a enabled() amb debug = true i el context és una Activity, es mostra un Toast amb el missatge correcte.
+        Provar que, quan es crida a enabled() amb debug = false i el context és una Activity, no es mostra cap Toast.
+        Provar que, quan es crida a enabled(), es mostra el missatge correcte al logcat.
+        Provar que, quan es crida a enabled() amb un context que no és una Activity, no es mostra cap Toast.
+        Provar que, quan es crida a enabled() amb un context que no és una Activity, es mostra l'error al logcat. Pas 2: Proves d'integració
+Pas 2: Un cop tinguem les proves unitàries, passarem a les proves d'integració. Aquestes proves verificaran la comunicació entre:
+    UserRepositoryImpl i ApiService
+    UserViewModel i UserRepositoryImpl
+Pas 3: Proves E2E (Espresso)
+Finalment, farem les proves E2E amb Espresso per a verificar la navegació entre la llista i els detalls.
+Prioritat
+Començarem per les classes més senzilles i que tenen menys dependències, i anirem avançant cap a les classes més complexes.
+Proposta
+Proposo que comencem a crear els tests de la classe UserDetailScreen (funció getUserField), ja que és la més senzilla i no té cap dependència.
+
+*/
