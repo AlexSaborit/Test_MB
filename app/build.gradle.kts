@@ -60,9 +60,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.appdistribution.gradle)
-    testImplementation(libs.junit)
-    testImplementation(libs.junit.jupiter)
-    androidTestImplementation(libs.androidx.junit)
+
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(libs.androidx.activity.compose)
@@ -75,6 +73,12 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
+    //unit tests
+    testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter)
+    androidTestImplementation(libs.androidx.junit)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk) // Use the latest version
+    testImplementation(libs.mockwebserver)
 
 }
