@@ -81,4 +81,16 @@ dependencies {
     testImplementation(libs.mockk)
     testImplementation(libs.mockwebserver)
 
+    //integration tests
+    androidTestImplementation(libs.androidx.junit.ktx)
+    androidTestImplementation(libs.androidx.runner)
+    androidTestImplementation(libs.androidx.espresso.core.v351)
+    androidTestImplementation(libs.core.ktx)
+    androidTestImplementation(libs.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.android.compiler.v250)
+    testImplementation(libs.truth.java8.extension)
+    androidTestImplementation(libs.truth.java8.extension)
+    androidTestImplementation(libs.mockwebserver)
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
+
 }
