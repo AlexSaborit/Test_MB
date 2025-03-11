@@ -78,7 +78,7 @@ dependencies {
     testImplementation(libs.junit.jupiter)
     androidTestImplementation(libs.androidx.junit)
     testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.mockk) // Use the latest version
+    testImplementation(libs.mockk)
     testImplementation(libs.mockwebserver)
 
 }
