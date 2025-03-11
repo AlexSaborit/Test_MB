@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.appdistribution.gradle)
     testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
@@ -73,5 +74,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
 
 }
