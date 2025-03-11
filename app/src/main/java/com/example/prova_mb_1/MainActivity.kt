@@ -118,13 +118,13 @@ Pas 1: Proves unitàries
     i quins casos hem de provar. Anem a fer una llista de les classes amb les proves que farem,
      i així podrem anar marcant com a fetes les que ja tinguem:
     Classes amb proves unitàries:
-    1. ApiService:
+✅  1. ApiService:
         Provar que getUsers() fa la crida a l'endpoint correcte (/users) i amb el mètode HTTP correcte (GET).
         Provar que si el servidor retorna una resposta amb èxit (codi 200), Retrofit transforma correctament
         les dades JSON rebudes a una llista d'objectes User.
         Provar que si el servidor retorna un error (codis 400, 500, etc.), Retrofit tracta l'error correctament.
         Provar que si la crida falla per algun altre motiu (problema de xarxa, etc.), Retrofit tracta l'error correctament.
-    2. RetrofitModule:
+✅  2. RetrofitModule:
         Provar que provideRetrofit() retorna un objecte Retrofit amb la URL base correcte i amb el GsonConverterFactory.
         Provar que provideApiService() retorna un objecte ApiService correctament configurat.
 ✅  3. UserDetailScreen (funció getUserField):
@@ -139,7 +139,7 @@ Pas 1: Proves unitàries
         Conté 2 elements.
         El primer element té id = 1, name = "Mock User 1" i email = "mock1@example.com".
         El segon element té id = 2, name = "Mock User 2" i email = "mock2@example.com".
-    5. UserRepositoryImpl:
+✅  5. UserRepositoryImpl:
         Provar que, quan es crida a getUsers(), es crida a apiService.getUsers().
         Provar que, si apiService.getUsers() retorna una resposta amb èxit (codi 200) i amb cos
         (una llista d'usuaris), getUsers() retorna aquesta llista d'usuaris.
