@@ -38,7 +38,7 @@ Requisitos:
 ✅  a. Usar Hilt o Dagger para la inyección de dependencias en ViewModels y Repositorios.
 
 4. Data Binding
-	a. Usar Data Binding en la UI para enlazar datos a los elementos de la vista.
+✅	a. Usar Data Binding en la UI para enlazar datos a los elementos de la vista.
 
 5. Testing
 	a. Implementar pruebas unitarias con JUnit y Mockk para validar la lógica de negocio.
