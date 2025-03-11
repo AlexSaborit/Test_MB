@@ -146,7 +146,7 @@ Pas 1: Proves unitàries
         Provar que, si apiService.getUsers() retorna una resposta amb èxit (codi 200) però amb cos null,
         getUsers() retorna una llista buida.
         Provar que, si apiService.getUsers() retorna una resposta amb error (codi 400 o 500), getUsers() retorna una llista buida.
-    6. UserViewModel:
+✅  6. UserViewModel:
         Provar que, quan es crea UserViewModel, es crida a loadUsers().
         Provar que loadUsers() crida a userRepository.getUsers().
         Provar que, si userRepository.getUsers() retorna una llista d'usuaris, users emet aquesta llista.
