@@ -71,7 +71,7 @@ fun UserAppWithInsets(userViewModel: UserViewModel) {
     val insets = remember { mutableStateOf(WindowInsetsCompat.CONSUMED) }
     var selectedUser by remember { mutableStateOf<User?>(null) }
 
-    val users by userViewModel.users.collectAsState() //obtain userlist from viewmodel
+    val userListState by userViewModel.userListState.collectAsState() //obtain userlist from viewmodel
 
     DisposableEffect(Unit) {
         val window = (context as? ComponentActivity)?.window
@@ -91,7 +91,7 @@ fun UserAppWithInsets(userViewModel: UserViewModel) {
         Column(modifier = Modifier.padding(paddingValues).padding(16.dp)) {
             if (selectedUser == null) {
                 UserListScreen(
-                    users = users,
+                    users = userListState.users,
                     onUserClick = { selectedUser = it })
             } else {
                 UserDetailScreen(user = selectedUser, onBack = { selectedUser = null })
