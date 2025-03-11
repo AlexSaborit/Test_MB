@@ -91,6 +91,6 @@ dependencies {
     testImplementation(libs.truth.java8.extension)
     androidTestImplementation(libs.truth.java8.extension)
     androidTestImplementation(libs.mockwebserver)
-    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
+    androidTestImplementation(libs.kotlinx.coroutines.test)
 
 }

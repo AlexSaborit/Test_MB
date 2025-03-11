@@ -19,6 +19,9 @@
       <SelectionState runConfigName="UserRepositoryImplIntegrationTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="UserViewModelIntegrationTest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>
