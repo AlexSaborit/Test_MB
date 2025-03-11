@@ -41,7 +41,7 @@ Requisitos:
 ✅	a. Usar Data Binding en la UI para enlazar datos a los elementos de la vista.
 
 5. Testing
-	a. Implementar pruebas unitarias con JUnit y Mockk para validar la lógica de negocio.
+✅	a. Implementar pruebas unitarias con JUnit y Mockk para validar la lógica de negocio.
 	b. Implementar pruebas de integración para verificar la comunicación entre capas.
 	c. Implementar una prueba E2E con Espresso que valide la navegación entre la lista y los detalles.
 
@@ -108,6 +108,7 @@ fun PreviewUserAppWithInsets() {
     UserAppWithInsets(mockUserViewModel)
 }
 
+//TODO("DELETE THIS COMMENT WHEN DONE")
 /* //passos conversió punt 5. Testing
 	a. Implementar pruebas unitarias con JUnit y Mockk para validar la lógica de negocio.
 	b. Implementar pruebas de integración para verificar la comunicación entre capas.
