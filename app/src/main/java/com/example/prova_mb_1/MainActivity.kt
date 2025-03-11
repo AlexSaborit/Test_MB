@@ -133,7 +133,7 @@ Pas 1: Proves unitàries
         Si menuItem és 2, ha de retornar user.phone o "".
         Si menuItem és 3, ha de retornar user.website o "".
         Si menuItem no és cap dels anteriors, ha de retornar "".
-    4. MockUserRepository:
+✅  4. MockUserRepository:
         Provar que, quan es crida a getUsers(), retorna una llista que:
         No és null.
         Conté 2 elements.
