@@ -7,6 +7,7 @@ import android.widget.Toast
 
 object Debug {
     val debug = false // Set to true to enable debug mode
+    
     /**
      * Displays a message as a Toast and logs an error.
      *
@@ -19,20 +20,22 @@ object Debug {
                 Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show()
             }
             Log.e(context.toString(), mensaje)
-        } ?: Log.e("showMessage", "The Toast can not be shown: context is not an instance of Activity")
+        } ?: Log.e("showMessage", "Function Debug.showMessage: A Toast can not be shown: context " + context.toString() + " is not an instance of Activity")
     }
+
     /**
-     * Enables debug mode and displays a toast message if debug mode is active.
-     * Also logs an error message indicating that debug mode has been enabled.
+     * Displays the status of the debug mode (ENABLED/DISABLED) as a Toast and logs it.
      *
      * @param context The application context. Must be an instance of Activity to show a Toast.
      */
-    fun enabled(context: Context) {
+    fun status(context: Context) {
         (context as? Activity)?.runOnUiThread {
             if (debug) {
                 Toast.makeText(context, "Debug mode ENABLED", Toast.LENGTH_SHORT).show()
+                Log.e(context.toString(), "Debug mode ENABLED")
+            } else {
+                Log.e(context.toString(), "Debug mode DISABLED")
             }
-            Log.e(context.toString(), "Debug mode ENABLED")
-        } ?: Log.e("showMessage", "The Toast can not be shown: context is not an instance of Activity")
+        } ?: Log.e("showMessage", "Function Debug.status: A Toast can not be shown: context " + context.toString() + " is not an instance of Activity")
     }
 }

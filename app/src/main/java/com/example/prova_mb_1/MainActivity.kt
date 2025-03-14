@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             UserAppWithInsets(userViewModel)
-            Debug.enabled(this)
+            Debug.status(this)
         }
     }
 }
